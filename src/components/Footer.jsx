@@ -1,22 +1,4 @@
-import { Github, Linkedin, Twitter } from 'lucide-react';
-
-const socialLinks = [
-  {
-    icon: Github,
-    href: '#',
-    label: 'GitHub',
-  },
-  {
-    icon: Linkedin,
-    href: '#',
-    label: 'LinkedIn',
-  },
-  {
-    icon: Twitter,
-    href: '#',
-    label: 'Twitter',
-  },
-];
+import { SocialMedia } from './SocialMedia';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,17 +18,7 @@ export const Footer = () => {
           </div>
 
           {/* Social Links */}
-          <div className='flex items-center gap-4'>
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className='p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all'>
-                <social.icon className='w-5 h-5' />
-              </a>
-            ))}
-          </div>
+          <SocialMedia />
         </div>
       </div>
     </footer>

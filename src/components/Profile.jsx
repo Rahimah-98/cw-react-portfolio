@@ -1,9 +1,9 @@
-export const Profile = ({ photo, title, bio }) => {
+export const Profile = ({ path, title, bio }) => {
   return (
     <article className='w-full max-w-sm md:max-w-md mx-auto md:mx-0 md:mr-24'>
       <div className='relative max-w-lg mx-auto glass rounded-full shadow-xl shadow-primary/25'>
         <img
-          src={photo}
+          src={path}
           alt={title}
           className='w-full aspect-square object-cover rounded-full'
         />

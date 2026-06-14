@@ -1,47 +1,133 @@
 @import 'tailwindcss';
-@theme {
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --hero-bg: url('/bg-light.png');
+
+  --color-background: #f0f2f5;
+  --color-foreground: #030712;
+
+  --color-card: #0f172a;
+
+  --color-primary: #0284c7;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #334155;
+
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+
+  --color-border: #e2e8f0;
+  --color-highlight: #0ea5e9;
+
+  --color-surface: #ffffff;
+}
+
+.dark {
+  --hero-bg: url('/hero-bg.png');
+
   --color-background: #030712;
   --color-foreground: #f0f2f5;
+
   --color-card: #0f172a;
+
   --color-primary: #7dd3fc;
   --color-primary-foreground: #ffffff;
+
   --color-secondary: #1e293b;
   --color-secondary-foreground: #bae6fd;
+
   --color-muted: #1f2937;
   --color-muted-foreground: #94a3b8;
+
   --color-border: #243041;
   --color-highlight: #38bdf8;
+
   --color-surface: #111827;
 }
+
+@theme {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+
+  --color-card: var(--color-card);
+
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+
+  --color-border: var(--color-border);
+  --color-highlight: var(--color-highlight);
+
+  --color-surface: var(--color-surface);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  button {
-    cursor: pointer;
-  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: 'Inter', sans-serif;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
+
+  button {
+    cursor: pointer;
+  }
+
   .font-serif {
     font-family: 'Playfair Display', serif;
   }
 }
+
 @layer components {
   .glass {
     background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
     backdrop-filter: blur(16px);
     border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
   }
-  .glass-strong {
-    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
-    backdrop-filter: blur(24px);
-    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
-  }
+
   .glow-text {
     text-shadow: 0 0 30px
       color-mix(in srgb, var(--color-primary) 50%, transparent);
   }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

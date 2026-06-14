@@ -1,6 +1,7 @@
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Github, Star } from 'lucide-react';
 
-export const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ project, onViewDetails }) => {
+
   return (
     <div className='group glass rounded-2xl overflow-hidden md:row-span-1'>
       <div className='relative overflow-hidden aspect-video'>
@@ -37,10 +38,17 @@ export const ProjectCard = ({ project }) => {
 
       <div className='p-6 space-y-4'>
         <div className='flex items-start justify-between'>
-          <h3 className='text-xl font-semibold group-hover:text-primary transition-colors'>
-            {project.name}
-          </h3>
-
+          <div className='flex items-center justify-center gap-4'>
+            <h3 className='text-xl font-semibold group-hover:text-primary'>
+              {project.name}
+            </h3>
+            {project.featured && (
+              <span className='flex items-center gap-1 px-2 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-light'>
+                <Star className='w-3 h-3 fill-current' />
+                Featured
+              </span>
+            )}
+          </div>
           <a href={project.link} target='_blank'>
             <ArrowUpRight
               className='w-5 h-5 
@@ -53,14 +61,21 @@ export const ProjectCard = ({ project }) => {
 
         <p className='text-muted-foreground text-sm'>{project.description}</p>
 
-        <div className='flex flex-wrap gap-2'>
-          {project.techStack.map((tag, tagIdx) => (
-            <span
-              key={tagIdx}
-              className='px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300'>
-              {tag}
-            </span>
-          ))}
+        <div className='flex items-center justify-between'>
+          <div className='flex flex-wrap gap-2'>
+            {project.techStack.map((tag) => (
+              <span
+                key={tag}
+                className='px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300'>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <button
+            onClick={() => onViewDetails(project)}
+            className='text-primary text-sm font-medium cursor-pointer px-4 py-1.5 bg-surface border border-border/50 rounded-full hover:border-primary/50 animate-pulse'>
+            View Details
+          </button>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import { About } from './sections/About';
 import { Projects } from './sections/Projects';
 import { Contact } from './sections/Contact';
 import { Footer } from './components/Footer';
+import { Feedback } from './sections/Feedback';
+import { Skills } from './sections/Skills';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Skills />
         <Projects />
+        <Feedback />
         <Contact />
       </main>
       <Footer />

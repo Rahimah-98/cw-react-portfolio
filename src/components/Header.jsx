@@ -1,5 +1,6 @@
 import { Button } from '../components/Button';
 import { Download, ArrowRight } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
 
 const quotes = [
   'Code is like humor. When you have to explain it, it’s bad.',
@@ -18,17 +19,13 @@ const quotes = [
   'One step at a time is still moving forward.',
 ];
 
-const randomIndex = Math.floor(Math.random() * quotes.length);
-
-const randomQuote = quotes[randomIndex];
-
 export const Header = ({ name, welcomeMessage }) => {
   return (
-    <section className='relative text-center md:text-start md:min-h-screen overflow-hidden'>
+    <header className='relative text-center md:text-start md:min-h-screen overflow-hidden'>
       <div className='container mx-auto px-6 pt-34 pb-8 md:pb-20 relative z-10 space-y-6'>
         <div className='space-y-8 flex flex-col gap-3'>
           <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'>
-            <span className='text-3xl md:text-4xl font-serif italic font-normal text-white'>
+            <span className='text-3xl md:text-4xl font-serif italic font-normal'>
               {welcomeMessage}
             </span>
             <br />
@@ -45,26 +42,34 @@ export const Header = ({ name, welcomeMessage }) => {
           {/* CTAs */}
           <div className='flex flex-row mx-auto md:mx-0 gap-4'>
             <a href='#contact'>
-              <Button type='button'>
+              <Button
+                type='button'
+                className='text-white border border-primary'>
                 Contact Me <ArrowRight className='w-5 h-5' />
               </Button>
             </a>
-            <Button
-              className='bg-transparent border duration-200 border-primary'
-              type='button'>
-              <Download className='w-5 h-5' />
-              Download CV
-            </Button>
+            <a href='/cv/Rahimah-CV.pdf' download='Rahimah-CV.pdf'>
+              <Button
+                className='bg-transparent border duration-200 border-primary text-primary hover:text-white'
+                type='button'>
+                <Download className='w-5 h-5' />
+                Download CV
+              </Button>
+            </a>
           </div>
         </div>
 
         {/* Motivational Quote */}
-        <div className='glass bg-background rounded-2xl mt-10 p-4 shadow-lg shadow-primary/25 '>
+        <div className='w-fit glass bg-background rounded-2xl mt-10 p-4 shadow-lg shadow-primary/25 animate-fade-in'>
           <blockquote className='text-lg font-medium italic text-foreground'>
-            {randomQuote}
+            <TypeAnimation
+              sequence={quotes.flatMap((quote) => [quote, 5000])}
+              speed={50}
+              repeat={Infinity}
+            />
           </blockquote>
         </div>
       </div>
-    </section>
+    </header>
   );
 };

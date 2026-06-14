@@ -12,6 +12,7 @@ import {
   ArrowUp,
 } from 'lucide-react';
 import { useState } from 'react';
+import Avatar from '../components/Avatar';
 
 const hobbies = [
   {
@@ -69,7 +70,7 @@ export const About = () => {
             <h2 className='text-4xl md:text-5xl font-bold leading-tight text-secondary-foreground'>
               Passionate About
               <br />
-              <span className='font-serif italic font-normal text-white'>
+              <span className='font-serif italic font-normal dark:text-white text-[#bae6fd]'>
                 {' '}
                 Building and Learning.
               </span>
@@ -100,38 +101,42 @@ export const About = () => {
             </div>
           </div>
 
-          <div className='flex flex-col gap-4'>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-6'>
-              {(showMore ? hobbies : hobbies.slice(0, 4)).map((item, idx) => (
-                <div
-                  key={idx}
-                  className='glass flex items-center gap-3 p-2 rounded-2xl '>
-                  <div className='w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group hover:bg-primary/20 '>
-                    <item.icon className='w-4 h-4 text-primary' />
-                  </div>
+          <div className='flex flex-col'>
+            <div className='flex flex-col gap-4'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-6'>
+                {(showMore ? hobbies : hobbies.slice(0, 4)).map((item) => (
+                  <div
+                    key={item.title}
+                    className='glass flex items-center gap-3 p-2 rounded-2xl '>
+                    <div className='w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group hover:bg-primary/20'>
+                      <item.icon className='w-4 h-4 text-primary' />
+                    </div>
 
-                  <h3 className='text-md md:text-lg font-semibold'>
-                    {item.title}
-                  </h3>
-                </div>
-              ))}
+                    <h3 className='text-md md:text-lg font-semibold'>
+                      {item.title}
+                    </h3>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                className='mt-6 w-48 text-primary self-center hover:text-primary/85'
+                onClick={() => setShowMore(!showMore)}>
+                {showMore ? (
+                  <>
+                    Show Less
+                    <ArrowUp className='w-5 h-5 inline-block ml-1' />
+                  </>
+                ) : (
+                  <>
+                    Show More
+                    <ArrowDown className='w-5 h-5 inline-block ml-1' />
+                  </>
+                )}
+              </button>
             </div>
 
-            <button
-              className='mt-6 w-48 text-primary self-center hover:text-primary/85'
-              onClick={() => setShowMore(!showMore)}>
-              {showMore ? (
-                <>
-                  Show Less
-                  <ArrowUp className='w-5 h-5 inline-block ml-1' />
-                </>
-              ) : (
-                <>
-                  Show More
-                  <ArrowDown className='w-5 h-5 inline-block ml-1' />
-                </>
-              )}
-            </button>
+            <Avatar />
           </div>
         </div>
       </div>
