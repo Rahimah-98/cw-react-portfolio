@@ -15,12 +15,17 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 - Dark futuristic design
 - Built with Tailwind CSS
 
+
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies and Libraries Used
 
 - React
 - Vite
 - Tailwind CSS
 - JavaScript
 - Lucide React
+- Motion 
+- React Icons
+- React Type Animation
+- Canvas Confetti
