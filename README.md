@@ -23,9 +23,10 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 - Live Preview Contact Form
   
 
+
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies and Libraries Used
 
 - React
 - Vite
@@ -34,3 +35,8 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 - lucide-react
 - react-router-dom
 - motion
+- Lucide React
+- Motion 
+- React Icons
+- React Type Animation
+- Canvas Confetti
