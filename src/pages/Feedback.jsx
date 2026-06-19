@@ -17,9 +17,36 @@ export const Feedback = () => {
       comment:
         'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
     },
+    {
+      id: 3,
+      name: 'Sarah Johnson',
+      rating: 2,
+      comment: 'Amazing portfolio. Very clean UI and professional projects.',
+    },
+    {
+      id: 4,
+      name: 'John Smith',
+      rating: 1,
+      comment:
+        'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
+    },
+    {
+      id: 5,
+      name: 'Sarah Johnson',
+      rating: 5,
+      comment: 'Amazing portfolio. Very clean UI and professional projects.',
+    },
+    {
+      id: 6,
+      name: 'John Smith',
+      rating: 3,
+      comment:
+        'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
+    },
   ]);
 
   const [sortBy, setSortBy] = useState('highest');
+  console.log(sortBy);
 
   const sortedFeedbacks = [...feedbacks].sort((a, b) =>
     sortBy === 'highest' ? b.rating - a.rating : a.rating - b.rating,
@@ -50,15 +77,14 @@ export const Feedback = () => {
           <FeedbackForm setFeedbacks={setFeedbacks} />
 
           <div>
-            <div className='flex justify-evenly md:justify-between items-center mb-6'>
+            <div className='relative z-20 flex justify-evenly md:justify-between items-center mb-6'>
               <h3 className='font-serif italic text-lg font-semibold text-primary'>
                 Visitor Reviews
               </h3>
-
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className='
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className='
                   px-3 py-2
                   rounded-xl
                   border border-slate-300 dark:border-slate-700
@@ -74,9 +100,10 @@ export const Feedback = () => {
                   transition-all
                   cursor-pointer
                 '>
-                <option value='highest'>Highest Rating</option>
-                <option value='lowest'>Lowest Rating</option>
-              </select>
+                  <option value='highest'>Highest Rating</option>
+                  <option value='lowest'>Lowest Rating</option>
+                </select>
+              
             </div>
 
             <div className='relative'>

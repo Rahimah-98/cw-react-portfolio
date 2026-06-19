@@ -1,5 +1,6 @@
 import { Button } from '../components/Button';
 import { Download, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 
 const quotes = [
@@ -41,13 +42,13 @@ export const Header = ({ name, welcomeMessage }) => {
           </p>
           {/* CTAs */}
           <div className='flex flex-row mx-auto md:mx-0 gap-4'>
-            <a href='#contact'>
+            <Link to='/contact'>
               <Button
                 type='button'
                 className='text-white border border-primary'>
                 Contact Me <ArrowRight className='w-5 h-5' />
               </Button>
-            </a>
+            </Link>
             <a href='/cv/Rahimah-CV.pdf' download='Rahimah-CV.pdf'>
               <Button
                 className='bg-transparent border duration-200 border-primary text-primary hover:text-white'

@@ -1,3 +1,4 @@
+import {  NavLink } from 'react-router-dom';
 import { SocialMedia } from './SocialMedia';
 
 export const Footer = () => {
@@ -9,9 +10,9 @@ export const Footer = () => {
         <div className='flex flex-col md:flex-row items-center justify-between gap-8'>
           {/* Logo & Copyright */}
           <div className='text-center md:text-left'>
-            <a href='/' className='text-xl font-bold tracking-tight'>
+            <NavLink to='/' className='text-xl font-bold tracking-tight'>
               RA<span className='text-primary'>./</span>
-            </a>
+            </NavLink>
             <p className='text-sm text-muted-foreground mt-2'>
               © {currentYear} Built with ❤️ by Rahimah Ansari
             </p>
