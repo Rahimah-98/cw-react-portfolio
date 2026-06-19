@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(
-    () => localStorage.getItem('theme') === 'dark',
-  );
+  const context = useContext(ThemeContext);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
+  if (!context) {
+    throw new Error('ThemeToggle must be used inside ThemeProvider');
+  }
 
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }, [dark]);
+  const { dark, toggleTheme } = context;
 
   return (
     <button
-      onClick={() => setDark(!dark)}
+      onClick={toggleTheme}
       className='relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primary/10 transition-colors'
       aria-label='Toggle theme'>
       <AnimatePresence mode='wait'>

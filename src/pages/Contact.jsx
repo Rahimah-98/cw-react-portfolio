@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ContactForm } from '../components/ContactForm';
 import { ContactPreview } from '../components/ContactPreview';
@@ -24,18 +24,45 @@ const contactInfo = [
 ];
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
   const [success, setSuccess] = useState(false);
 
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem('contactForm');
+
+    if (!saved) {
+      return {
+        name: '',
+        email: '',
+        message: '',
+      };
+    }
+
+    try {
+      return JSON.parse(saved);
+    } catch {
+      localStorage.removeItem('contactForm');
+
+      return {
+        name: '',
+        email: '',
+        message: '',
+      };
+    }
+  });
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    localStorage.setItem('contactForm', JSON.stringify(formData));
+  }, [formData]);
+
   return (
-    <section
-      id='contact'
-      className='relative py-20 overflow-hidden'>
+    <section className='relative py-20 overflow-hidden'>
       <div className='absolute top-0 left-0 w-full h-full'>
         <div className='absolute top-1/4 left-1/5 w-120 h-120 bg-primary/10 blur-3xl' />
         <div className='absolute bottom-1/5 right-1/4 w-80 h-80 bg-highlight/5 rounded blur-3xl' />
@@ -92,7 +119,7 @@ export const Contact = () => {
                 ))}
               </div>
             </div>
-              <ContactPreview formData={formData} />
+            <ContactPreview formData={formData} />
           </div>
         </div>
 

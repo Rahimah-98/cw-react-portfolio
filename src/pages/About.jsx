@@ -8,8 +8,8 @@ import {
   Users,
   ShoppingBag,
   Camera,
-  ArrowDown,
-  ArrowUp,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { useState } from 'react';
 import Avatar from '../components/Avatar';
@@ -57,9 +57,7 @@ export const About = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <section
-      id='about'
-      className='py-20 text-center md:text-start relative overflow-hidden'>
+    <section className='py-20 text-center md:text-start relative overflow-hidden'>
       <div className='container mx-auto px-6 relative z-10'>
         <div className='grid lg:grid-cols-2 gap-16 items-center'>
           <div className='space-y-8'>
@@ -125,12 +123,12 @@ export const About = () => {
                 {showMore ? (
                   <>
                     Show Less
-                    <ArrowUp className='w-5 h-5 inline-block ml-1' />
+                    <ChevronUp className='w-5 h-5 inline-block ml-1' />
                   </>
                 ) : (
                   <>
                     Show More
-                    <ArrowDown className='w-5 h-5 inline-block ml-1' />
+                    <ChevronDown className='w-5 h-5 inline-block ml-1' />
                   </>
                 )}
               </button>

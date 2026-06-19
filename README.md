@@ -4,6 +4,11 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 
 ---
 
+## 💻 Live Demo Link
+[portfolio](http://localhost:5173/projects)
+
+---
+
 ## 🚀 Features
 
 - Responsive modern UI
@@ -14,6 +19,9 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 - Smooth scrolling navigation
 - Dark futuristic design
 - Built with Tailwind CSS
+- Projects Preview Update
+- Live Preview Contact Form
+  
 
 
 ---
@@ -24,6 +32,9 @@ A modern and responsive developer portfolio built with React and Tailwind CSS. T
 - Vite
 - Tailwind CSS
 - JavaScript
+- lucide-react
+- react-router-dom
+- motion
 - Lucide React
 - Motion 
 - React Icons
