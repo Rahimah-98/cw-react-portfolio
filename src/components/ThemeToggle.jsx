@@ -16,7 +16,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       className='relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primary/10 transition-colors'
-      aria-label='Toggle theme'>
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}>
       <AnimatePresence mode='wait'>
         {dark ? (
           <motion.div

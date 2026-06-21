@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --hero-bg: url('/bg-light.png');
+  --hero-bg: url('/bg-light.webp');
 
   --color-background: #f0f2f5;
   --color-foreground: #030712;
@@ -26,7 +26,7 @@
 }
 
 .dark {
-  --hero-bg: url('/hero-bg.png');
+  --hero-bg: url('/hero-bg.webp');
 
   --color-background: #030712;
   --color-foreground: #f0f2f5;

@@ -57,10 +57,10 @@ export const About = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <section className='py-20 text-center md:text-start relative overflow-hidden'>
+    <section className='min-h-screen py-20 text-center md:text-start relative overflow-hidden'>
       <div className='container mx-auto px-6 relative z-10'>
-        <div className='grid lg:grid-cols-2 gap-16 items-center'>
-          <div className='space-y-8'>
+        <div className='grid xl:grid-cols-2 gap-16 items-center'>
+          <div className='space-y-8 pt-20 xl:pt-0'>
             <span className='text-secondary-foreground text-sm font-medium tracking-wider uppercase'>
               About Me
             </span>
@@ -74,7 +74,7 @@ export const About = () => {
               </span>
             </h2>
 
-            <div className='space-y-4 text-muted-foreground'>
+            <div className='space-y-4 text-muted-foreground leading-relaxed'>
               <p>
                 I am a passionate web developer who loves learning, building,
                 and turning ideas into real digital experiences. I enjoy
@@ -91,17 +91,24 @@ export const About = () => {
                 most rewarding parts of development for me.
               </p>
               <p>
-                Beyond coding, I believe in constant growth and never stopping
-                the learning process. I enjoy challenging myself with new
-                projects, improving my creativity, and building experiences that
-                can make people’s lives easier.
+                Beyond coding, I believe in continuous growth and lifelong
+                learning. My goal is to become a well-rounded software developer
+                who can build meaningful digital experiences from start to
+                finish. I value clean, maintainable code, thoughtful design, and
+                creating solutions that genuinely help users. My strengths
+                include problem-solving, adaptability, and a strong commitment
+                to improving my skills through hands-on projects and real-world
+                challenges.
               </p>
             </div>
           </div>
 
-          <div className='flex flex-col'>
+          <div className='flex flex-col gap-8'>
+            <span className='text-secondary-foreground text-sm font-medium tracking-wider uppercase'>
+              Hobbies
+            </span>
             <div className='flex flex-col gap-4'>
-              <div className='grid grid-cols-2 md:grid-cols-3 gap-6'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                 {(showMore ? hobbies : hobbies.slice(0, 4)).map((item) => (
                   <div
                     key={item.title}

@@ -22,7 +22,7 @@ const quotes = [
 
 export const Header = ({ name, welcomeMessage }) => {
   return (
-    <header className='relative text-center md:text-start md:min-h-screen overflow-hidden'>
+    <header className='relative text-center md:text-start overflow-hidden'>
       <div className='container mx-auto px-6 pt-34 pb-8 md:pb-20 relative z-10 space-y-6'>
         <div className='space-y-8 flex flex-col gap-3'>
           <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold leading-tight'>

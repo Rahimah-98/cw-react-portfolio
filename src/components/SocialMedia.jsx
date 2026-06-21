@@ -25,7 +25,7 @@ export const SocialMedia = () => {
         <a
           key={social.label}
           href={social.href}
-          aria-label={social.label}
+          aria-label={`Visit my ${social.label} Profile`}
           className='p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all'
           target='_blank'>
           <social.icon className='w-5 h-5' />

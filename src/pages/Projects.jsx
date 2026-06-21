@@ -1,23 +1,22 @@
-import {
-  ArrowUpRight,
-  CalendarDays,
-  Layers3,
-  ChevronDown,
-  ChevronUp,
-} from 'lucide-react';
+import { ArrowUpRight, Filter } from 'lucide-react';
 import { Button } from '../components/Button';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProjectUpdates } from '../components/ProjectUpdates';
-import { Filter } from 'lucide-react';
 import { useState } from 'react';
 import { Modal } from '../components/Modal';
+import { lazy, Suspense } from 'react';
+import { Spinner } from '../components/Spinner';
+
+const ProjectDetails = lazy(() => import('../components/ProjectDetails'));
 
 const projects = [
   {
     name: 'Aurora Academy',
     description:
       'This project allows students to enroll, view profiles, explore courses, and send messages to the school.',
-    image: '/projects/aurora.png',
+    overview:
+      'Developed a responsive school portal with HTML, CSS, and JavaScript that provides students with an intuitive way to explore courses, enroll online, manage their profiles, and communicate with the school through a modern user experience.',
+    image: '/projects/aurora.webp',
     status: 'Completed',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://rahimah-98.github.io/school-portal/',
@@ -36,7 +35,7 @@ const projects = [
     name: 'Movie Theater',
     description:
       'A modern movie theater website built with HTML and CSS, featuring new showing movie listings, and a clean cinematic design.',
-    image: '/projects/movie.png',
+    image: '/projects/movie.webp',
     status: 'In Progress',
     duration: '1 Weeks',
 
@@ -44,7 +43,8 @@ const projects = [
     link: 'https://rahimah-98.github.io/move-landing/',
     github: 'https://github.com/Rahimah-98/move-landing',
     progress: 60,
-
+    overview:
+      'Created a responsive movie theater website using HTML and CSS that allows users to easily explore currently showing movies through a clean cinematic interface, organized content, and intuitive navigation, resulting in a seamless browsing experience.',
     features: [
       'Hero Banner Section',
       'Movie Showcase',
@@ -58,7 +58,7 @@ const projects = [
     name: 'Portfolio',
     description:
       'A beginner portfolio website built with HTML and CSS as part of learning frontend development fundamentals.',
-    image: '/projects/port.png',
+    image: '/projects/port.webp',
     status: 'Featured',
     duration: '2 Weeks',
 
@@ -80,7 +80,7 @@ const projects = [
     name: 'Omnifood',
     description:
       'A modern and responsive food delivery website called Omnifood, built with HTML and CSS while learning responsive design and frontend development fundamentals.',
-    image: '/projects/omnifood.png',
+    image: '/projects/omnifood.webp',
     status: 'Completed',
     duration: '3 Months',
     techStack: ['HTML', 'CSS'],
@@ -101,14 +101,14 @@ const projects = [
     name: 'Loopstudios',
     description:
       'Built as a Frontend Mentor challenge using Tailwind CSS and Vanilla JavaScript. The project features a fully responsive landing page with a mobile navigation menu and a clean, modern design.',
-    image: '/projects/loopstudios.png',
-    status: 'Cmnpleted',
+    image: '/projects/loopstudios.webp',
+    status: 'In Progress',
     duration: '7 days',
 
     techStack: ['HTML', 'CSS', 'JavaScript', 'Tailwindcss'],
     link: 'https://loopstudios-tailwind-project.netlify.app/',
     github: 'https://github.com/Rahimah-98/loopstudios',
-    progress: 100,
+    progress: 95,
 
     features: [
       'Responsive Design',
@@ -185,7 +185,7 @@ export const Projects = () => {
                   onClick={() => setFilter(type)}
                   className={`px-3 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer ${
                     filter === type
-                      ? 'bg-primary text-foreground shadow-[0_0_20px_rgba(125,211,252,0.35)]'
+                      ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(125,211,252,0.35)]'
                       : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                   }`}>
                   {type.toUpperCase()}
@@ -213,7 +213,7 @@ export const Projects = () => {
 
         <div className='text-center mt-12'>
           <Button
-            className='text-foreground '
+            className='text-primary-foreground '
             type='button'
             onClick={() => setViewAll((prev) => !prev)}>
             {viewAll ? 'Show Less' : 'Show All Projects'}
@@ -223,91 +223,21 @@ export const Projects = () => {
       </div>
       <Modal
         isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}>
+        onClose={() => {
+          setSelectedProject(null);
+          setSeeMore(false);
+        }}>
         {selectedProject && (
-          <div className='space-y-3'>
-            <h2 className='text-3xl font-bold text-primary'>
-              {selectedProject.name}
-            </h2>
-
-            <img
-              src={selectedProject.image}
-              alt={selectedProject.name}
-              className='w-full rounded-xl'
+          <Suspense
+            fallback={
+              <Spinner/>
+            }>
+            <ProjectDetails
+              project={selectedProject}
+              seeMore={seeMore}
+              setSeeMore={setSeeMore}
             />
-
-            <p>{selectedProject.description}</p>
-            <button
-              onClick={() => setSeeMore(!seeMore)}
-              className='mt-2 border-b border-primary text-primary hover:text-primary/80 transition-all duration-200'>
-              {seeMore ? (
-                <div className='flex gap-1 items-center'>
-                  Hide Info
-                  <ChevronUp className='size-4' />
-                </div>
-              ) : (
-                <div className='flex gap-1 items-center'>
-                  More Info
-                  <ChevronDown className='size-4' />
-                </div>
-              )}
-            </button>
-            {seeMore && (
-              <div className='flex flex-col md:flex-row justify-between animate-fade-in'>
-                <div className='w-full md:border-r border-primary/30 md:mr-4'>
-                  <h3 className='font-semibold mb-2 text-primary'>Features</h3>
-                  <ul className='space-y-1'>
-                    {selectedProject.features?.map((feature) => (
-                      <li key={feature} className='text-sm pl-2'>
-                        • {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className='space-y-2 w-full mt-4 md:mt-0'>
-                  <div className='flex justify-between'>
-                    <h3 className='font-semibold text-primary'>Progress</h3>
-                    <span className='text-sm'>{selectedProject.progress}%</span>
-                  </div>
-                  <div
-                    role='progressbar'
-                    aria-valuenow={selectedProject.progress}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                    className='mx-auto h-2 bg-gray-500/50 border border-border rounded-full overflow-hidden'>
-                    <div
-                      className='h-full bg-primary transition-all duration-500 animate-fade-in'
-                      style={{
-                        width: `${selectedProject.progress}%`,
-                      }}
-                    />
-                  </div>
-                  <div className='flex justify-between pr-4 items-center mt-6'>
-                    <div className='flex gap-3 items-center'>
-                      <CalendarDays className='size-7 text-primary' />
-                      <div className='flex flex-col items-center text-sm'>
-                        <span className='text-primary'>Duration</span>
-                        <span>{selectedProject.duration}</span>
-                      </div>
-                    </div>
-                    <div className='flex gap-3 items-center'>
-                      <Layers3 className='size-7 text-primary' />
-                      <div className='flex flex-col items-start text-sm'>
-                        <span className='text-primary'>Tech Stack</span>
-                        <ul>
-                          {selectedProject.techStack.map((tech) => (
-                            <li className='inline-block pr-2' key={tech}>
-                              {tech}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          </Suspense>
         )}
       </Modal>
     </section>

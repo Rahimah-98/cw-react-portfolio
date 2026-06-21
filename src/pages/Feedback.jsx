@@ -17,32 +17,6 @@ export const Feedback = () => {
       comment:
         'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
     },
-    {
-      id: 3,
-      name: 'Sarah Johnson',
-      rating: 2,
-      comment: 'Amazing portfolio. Very clean UI and professional projects.',
-    },
-    {
-      id: 4,
-      name: 'John Smith',
-      rating: 1,
-      comment:
-        'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
-    },
-    {
-      id: 5,
-      name: 'Sarah Johnson',
-      rating: 5,
-      comment: 'Amazing portfolio. Very clean UI and professional projects.',
-    },
-    {
-      id: 6,
-      name: 'John Smith',
-      rating: 3,
-      comment:
-        'Working with Rahimah was a fantastic experience. The website was delivered on time, looked amazing, and performed flawlessly across all devices.',
-    },
   ]);
 
   const [sortBy, setSortBy] = useState('highest');

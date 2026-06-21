@@ -35,7 +35,7 @@ export const Navbar = () => {
                 className={({ isActive }) =>
                   `px-4 py-2 text-sm rounded-full transition ${
                     isActive
-                      ? 'bg-primary text-foreground'
+                      ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-surface'
                   }`
                 }>
